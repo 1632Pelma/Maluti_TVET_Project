@@ -36,3 +36,12 @@ export default function Navbar() {
           <a href="#">About</a>
           <a href="#">Contact</a>
         </div>
+
+        <div className="nav-actions">
+          <FiSearch className="icon" />
+          <button className="btn primary">Apply Now</button>
+        </div>
+      </div>
+    </nav>
+  );
+}
