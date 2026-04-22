@@ -24,12 +24,22 @@ export default function Navbar() {
   </span>
 
   <div className="dropdown-menu">
-    <a href="#">Vacancies</a>
-    <a href="#">Tenders</a>
     <a href="#">Publications</a>
     <a href="#">Staff QMS</a>
     <a href="#">Fraud Hotline</a>
     <a href="#">IT Satisfaction Survey</a>
+  </div>
+</div>
+
+
+     <div className="dropdown">
+  <span className="dropdown-toggle">
+    Tenders & Vacancies <FiChevronDown className="dropdown-icon" />
+  </span>
+
+  <div className="dropdown-menu">
+    <a href="#">Vacancies</a>
+    <a href="#">Tenders</a>
   </div>
 </div>
 
