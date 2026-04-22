@@ -1,0 +1,163 @@
+/* ================= SECTION ================= */
+
+.programmes {
+  padding: 70px 40px;
+  position: relative;
+  background: #f8fafc;
+  overflow: visible;
+}
+
+/* BACKGROUND IMAGE + OVERLAY (combined = no bugs) */
+.programmes::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.44),
+      rgba(255, 255, 255, 0.44)
+    ),
+    url("/images/course.png") center/cover no-repeat;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+/* CONTENT ABOVE BACKGROUND */
+.programmes h2,
+.programmes-grid {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= HEADING ================= */
+
+.programmes h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #0a3d62;
+  max-width: 1200px;
+  margin: 0 auto 35px;
+}
+
+.programmes h2::after {
+  content: "Browse available study areas";
+  display: block;
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 400;
+  margin-top: 6px;
+}
+
+/* ================= HORIZONTAL SCROLL ================= */
+
+.programmes-grid {
+  display: flex;
+  gap: 22px;
+
+  max-width: 1200px;
+  margin: 0 auto;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+
+  position: relative;
+}
+
+/* hide scrollbar */
+.programmes-grid::-webkit-scrollbar {
+  display: none;
+}
+.programmes-grid {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ================= FADE EDGES (SAFE) ================= */
+
+.programmes-grid::before,
+.programmes-grid::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1; /* BELOW cards */
+}
+
+.programmes-grid::before {
+  left: 0;
+  background: linear-gradient(to right, #f8fafc, transparent);
+}
+
+.programmes-grid::after {
+  right: 0;
+  background: linear-gradient(to left, #f8fafc, transparent);
+}
+
+/* ================= CARD ================= */
+
+.programme-card {
+  min-width: 180px;
+  flex-shrink: 0;
+
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  border-right: 1px solid #f1f5f9;
+
+  padding: 24px 18px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  position: relative;
+  z-index: 2; /* ABOVE fade */
+}
+
+.programme-card:last-child {
+  border-right: none;
+}
+
+/* ================= ICON ================= */
+
+.programme-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #0a3d62;
+  transition: 0.25s ease;
+}
+
+/* ================= TEXT ================= */
+
+.programme-card p {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* ================= HOVER ================= */
+
+.programme-card:hover {
+  background: #f9fbfd;
+  transform: translateY(-2px);
+}
+
+.programme-card:hover .programme-icon {
+  color: #f9a825;
+  transform: scale(1.05);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .programmes {
+    padding: 60px 20px;
+  }
+}
