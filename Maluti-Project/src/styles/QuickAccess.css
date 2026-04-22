@@ -3,11 +3,10 @@
   padding: 90px 0;
   background: white;
   text-align: center;
+  margin-bottom: 0px;
 }
 
-.quick {
-  margin-bottom: 100px;
-}
+
 .quick h2 {
   font-size: 42px;
   margin-bottom: 50px;
@@ -20,8 +19,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
-  max-width: 1200px;
   margin: 0 auto;
+    width: 100%;
+  max-width: 1400px;
 }
 
 
