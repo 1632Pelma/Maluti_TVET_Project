@@ -29,11 +29,28 @@ const iconMap = {
 };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/programmes")
-      .then((res) => res.json())
-      .then((data) => setProgrammes(data))
-      .catch((err) => console.error(err));
-  }, []);
+  const fallbackData = [
+    { id: 1, name: "Engineering Studies", category: "NCV", icon: "tools" },
+    { id: 2, name: "Information Technology", category: "NCV", icon: "laptop" },
+    { id: 3, name: "Business Management", category: "NATED", icon: "briefcase" },
+    { id: 4, name: "Hospitality", category: "NCV", icon: "utensils" },
+    { id: 5, name: "Electrical Infrastructure", category: "NCV", icon: "bolt" },
+    { id: 6, name: "Civil Engineering", category: "NATED", icon: "hardhat" },
+    { id: 7, name: "Tourism", category: "NCV", icon: "car" },
+    { id: 8, name: "Science Lab Tech", category: "NCV", icon: "flask" },
+  ];
+
+  fetch("http://localhost:5000/api/programmes")
+    .then((res) => {
+      if (!res.ok) throw new Error();
+      return res.json();
+    })
+    .then((data) => setProgrammes(data))
+    .catch(() => {
+      console.log("Using fallback data");
+      setProgrammes(fallbackData);
+    });
+}, []);
 
   // Filter by tab
   const filtered = programmes.filter(
