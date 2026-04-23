@@ -1,5 +1,5 @@
 import "../styles/Programmes.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   FaBriefcase,
@@ -10,26 +10,23 @@ import {
   FaUtensils,
   FaCar,
   FaBolt,
-  FaChevronLeft,
-  FaChevronRight,
 } from "react-icons/fa";
 
 function Programmes() {
   const [programmes, setProgrammes] = useState([]);
   const [activeTab, setActiveTab] = useState("NCV");
+  const [showAll, setShowAll] = useState(false);
 
-  const scrollRef = useRef();
-
-  const iconMap = {
-    briefcase: <FaBriefcase />,
-    tools: <FaTools />,
-    laptop: <FaLaptopCode />,
-    flask: <FaFlask />,
-    hardhat: <FaHardHat />,
-    utensils: <FaUtensils />,
-    car: <FaCar />,
-    bolt: <FaBolt />,
-  };
+const iconMap = {
+  laptop: <FaLaptopCode />,
+  bolt: <FaBolt />,
+  tools: <FaTools />,
+  hardhat: <FaHardHat />,
+  briefcase: <FaBriefcase />,
+  flask: <FaFlask />,
+  utensils: <FaUtensils />,
+  car: <FaCar />,
+};
 
   useEffect(() => {
     fetch("http://localhost:5000/api/programmes")
@@ -38,28 +35,31 @@ function Programmes() {
       .catch((err) => console.error(err));
   }, []);
 
+  // Filter by tab
   const filtered = programmes.filter(
     (item) => item.category === activeTab
   );
 
-  const scroll = (dir) => {
-    const container = scrollRef.current;
-    const amount = 320;
-    container.scrollBy({
-      left: dir === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
-  };
+  // Show only 8 unless expanded
+  const visibleProgrammes = showAll
+    ? filtered
+    : filtered.slice(0, 8);
+
+  // 🔥 Split dynamically into two columns
+  const half = Math.ceil(visibleProgrammes.length / 2);
 
   return (
     <section id="programmes" className="programmes">
       <h2>Programmes</h2>
 
- 
+      {/* Tabs */}
       <div className="programme-tabs">
         <span
           className={activeTab === "NCV" ? "active" : ""}
-          onClick={() => setActiveTab("NCV")}
+          onClick={() => {
+            setActiveTab("NCV");
+            setShowAll(false);
+          }}
         >
           NCV
         </span>
@@ -68,37 +68,59 @@ function Programmes() {
 
         <span
           className={activeTab === "NATED" ? "active" : ""}
-          onClick={() => setActiveTab("NATED")}
+          onClick={() => {
+            setActiveTab("NATED");
+            setShowAll(false);
+          }}
         >
           NATED
         </span>
       </div>
 
-     
-      <div className="programme-slider-wrapper">
-        <div className="fade left" />
-
-        <button className="arrow left" onClick={() => scroll("left")}>
-          <FaChevronLeft />
-        </button>
-
-        <div className="programme-slider" ref={scrollRef}>
-          {filtered.map((item) => (
-            <div key={item.id} className="programme-item">
-              <div className="programme-icon">
-                {iconMap[item.icon?.toLowerCase()] || <FaBriefcase />}
+      {/* Two Columns */}
+      <div className="programme-columns">
+        
+        {/* LEFT COLUMN */}
+        <div className="programme-column">
+          {visibleProgrammes.slice(0, half).map((item) => (
+            <div key={item.id} className="programme-line">
+              <div className="programme-line-content">
+                <span className="programme-icon">
+                  {iconMap[item.icon?.toLowerCase()] || <FaBriefcase />}
+                </span>
+                <h3>{item.name}</h3>
               </div>
-              <p>{item.name}</p>
             </div>
           ))}
         </div>
 
-        <button className="arrow right" onClick={() => scroll("right")}>
-          <FaChevronRight />
-        </button>
+        {/* RIGHT COLUMN */}
+        <div className="programme-column">
+          {visibleProgrammes.slice(half).map((item) => (
+            <div key={item.id} className="programme-line">
+              <div className="programme-line-content">
+                <span className="programme-icon">
+                  {iconMap[item.icon?.toLowerCase()] || <FaBriefcase />}
+                </span>
+                <h3>{item.name}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
 
-        <div className="fade right" />
       </div>
+
+      {/* Show More / Less */}
+      {filtered.length > 8 && (
+        <div className="show-more-container">
+          <button
+            className="show-more-btn"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "−" : "+"}
+          </button>
+        </div>
+      )}
     </section>
   );
 }
