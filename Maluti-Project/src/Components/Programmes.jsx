@@ -1,5 +1,5 @@
 import "../styles/Programmes.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import {
   FaBriefcase,
@@ -13,63 +13,190 @@ import {
 } from "react-icons/fa";
 
 function Programmes() {
-  const [programmes, setProgrammes] = useState([]);
   const [activeTab, setActiveTab] = useState("NCV");
   const [showAll, setShowAll] = useState(false);
 
-const iconMap = {
-  laptop: <FaLaptopCode />,
-  bolt: <FaBolt />,
-  tools: <FaTools />,
-  hardhat: <FaHardHat />,
-  briefcase: <FaBriefcase />,
-  flask: <FaFlask />,
-  utensils: <FaUtensils />,
-  car: <FaCar />,
-};
+  const programmes = [
+    // ===== NCV =====
+    {
+      id: 1,
+      name: "Information Technology & Computer Science",
+      category: "NCV",
+      icon: "laptop",
+    },
+    {
+      id: 2,
+      name: "Electrical Infrastructure Construction",
+      category: "NCV",
+      icon: "bolt",
+    },
+    {
+      id: 3,
+      name: "Engineering & Related Design",
+      category: "NCV",
+      icon: "tools",
+    },
+    {
+      id: 4,
+      name: "Civil Engineering & Building Construction",
+      category: "NCV",
+      icon: "hardhat",
+    },
+    {
+      id: 5,
+      name: "Marketing",
+      category: "NCV",
+      icon: "briefcase",
+    },
+    {
+      id: 6,
+      name: "Finance, Economics & Accounting",
+      category: "NCV",
+      icon: "briefcase",
+    },
+    {
+      id: 7,
+      name: "Office Administration",
+      category: "NCV",
+      icon: "briefcase",
+    },
+    {
+      id: 8,
+      name: "Primary Agriculture",
+      category: "NCV",
+      icon: "flask",
+    },
+    {
+      id: 9,
+      name: "Tourism",
+      category: "NCV",
+      icon: "utensils",
+    },
+    {
+      id: 10,
+      name: "Education and Development",
+      category: "NCV",
+      icon: "flask",
+    },
+    {
+      id: 11,
+      name: "Hospitality",
+      category: "NCV",
+      icon: "utensils",
+    },
+    {
+      id: 12,
+      name: "Primary Health",
+      category: "NCV",
+      icon: "flask",
+    },
 
-  useEffect(() => {
-  const fallbackData = [
-    { id: 1, name: "Engineering Studies", category: "NCV", icon: "tools" },
-    { id: 2, name: "Information Technology", category: "NCV", icon: "laptop" },
-    { id: 3, name: "Business Management", category: "NATED", icon: "briefcase" },
-    { id: 4, name: "Hospitality", category: "NCV", icon: "utensils" },
-    { id: 5, name: "Electrical Infrastructure", category: "NCV", icon: "bolt" },
-    { id: 6, name: "Civil Engineering", category: "NATED", icon: "hardhat" },
-    { id: 7, name: "Tourism", category: "NCV", icon: "car" },
-    { id: 8, name: "Science Lab Tech", category: "NCV", icon: "flask" },
+    // ===== NATED =====
+    {
+      id: 13,
+      name: "Electrical Engineering (N1–N6)",
+      category: "NATED",
+      icon: "bolt",
+    },
+    {
+      id: 14,
+      name: "Mechanical Engineering (N1–N6)",
+      category: "NATED",
+      icon: "tools",
+    },
+    {
+      id: 15,
+      name: "Civil Engineering (N1–N6)",
+      category: "NATED",
+      icon: "hardhat",
+    },
+    {
+      id: 16,
+      name: "Business Management",
+      category: "NATED",
+      icon: "briefcase",
+    },
+    {
+      id: 17,
+      name: "Marketing Management",
+      category: "NATED",
+      icon: "briefcase",
+    },
+    {
+      id: 18,
+      name: "Management Assistant",
+      category: "NATED",
+      icon: "briefcase",
+    },
+    {
+      id: 19,
+      name: "Financial Management",
+      category: "NATED",
+      icon: "briefcase",
+    },
+    {
+      id: 20,
+      name: "Public Management",
+      category: "NATED",
+      icon: "briefcase",
+    },
+    {
+      id: 21,
+      name: "Human Resource Management",
+      category: "NATED",
+      icon: "briefcase",
+    },
+    {
+      id: 22,
+      name: "Educare",
+      category: "NATED",
+      icon: "flask",
+    },
+    {
+      id: 23,
+      name: "Hospitality (N4–N6)",
+      category: "NATED",
+      icon: "utensils",
+    },
+    {
+      id: 24,
+      name: "Clothing Production",
+      category: "NATED",
+      icon: "flask",
+    },
+    {
+      id: 25,
+      name: "Art",
+      category: "NATED",
+      icon: "flask",
+    },
   ];
 
-  fetch("http://localhost:5000/api/programmes")
-    .then((res) => {
-      if (!res.ok) throw new Error();
-      return res.json();
-    })
-    .then((data) => setProgrammes(data))
-    .catch(() => {
-      console.log("Using fallback data");
-      setProgrammes(fallbackData);
-    });
-}, []);
+  const iconMap = {
+    laptop: <FaLaptopCode />,
+    bolt: <FaBolt />,
+    tools: <FaTools />,
+    hardhat: <FaHardHat />,
+    briefcase: <FaBriefcase />,
+    flask: <FaFlask />,
+    utensils: <FaUtensils />,
+    car: <FaCar />,
+  };
 
-  // Filter by tab
   const filtered = programmes.filter(
     (item) => item.category === activeTab
   );
 
-  // Show only 8 unless expanded
   const visibleProgrammes = showAll
     ? filtered
     : filtered.slice(0, 8);
 
-  // 🔥 Split dynamically into two columns
   const half = Math.ceil(visibleProgrammes.length / 2);
 
   return (
     <section id="programmes" className="programmes">
       <h2>Programmes</h2>
 
-      {/* Tabs */}
       <div className="programme-tabs">
         <span
           className={activeTab === "NCV" ? "active" : ""}
@@ -94,16 +221,13 @@ const iconMap = {
         </span>
       </div>
 
-      {/* Two Columns */}
       <div className="programme-columns">
-        
-        {/* LEFT COLUMN */}
         <div className="programme-column">
           {visibleProgrammes.slice(0, half).map((item) => (
             <div key={item.id} className="programme-line">
               <div className="programme-line-content">
                 <span className="programme-icon">
-                  {iconMap[item.icon?.toLowerCase()] || <FaBriefcase />}
+                  {iconMap[item.icon] || <FaBriefcase />}
                 </span>
                 <h3>{item.name}</h3>
               </div>
@@ -111,23 +235,20 @@ const iconMap = {
           ))}
         </div>
 
-        {/* RIGHT COLUMN */}
         <div className="programme-column">
           {visibleProgrammes.slice(half).map((item) => (
             <div key={item.id} className="programme-line">
               <div className="programme-line-content">
                 <span className="programme-icon">
-                  {iconMap[item.icon?.toLowerCase()] || <FaBriefcase />}
+                  {iconMap[item.icon] || <FaBriefcase />}
                 </span>
                 <h3>{item.name}</h3>
               </div>
             </div>
           ))}
         </div>
-
       </div>
 
-      {/* Show More / Less */}
       {filtered.length > 8 && (
         <div className="show-more-container">
           <button
