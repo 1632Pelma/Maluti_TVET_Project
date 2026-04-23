@@ -1,22 +1,60 @@
 import { FiSearch, FiChevronDown } from "react-icons/fi";
 import "../styles/Navbar.css";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav className="navbar">
       
       <div className="logo">
-        <img src="/images/logo.png" alt="Logo" />
+        <Link to="/">
+          <img src="/images/logo.png" alt="Logo" />
+        </Link>
       </div>
 
       
       <div className="nav-right">
         <div className="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Study</a>
-          <a href="#">Apply</a>
-          <a href="#">Campuses</a>
-          <a href="#">Student Life</a>
+           <Link to="/">Home</Link>
+          <Link to="/about">About Us</Link>
+         <Link to="/study">Study</Link>
+  
+         
+        <div className="dropdown">
+  <span className="dropdown-toggle">
+    Student Support <FiChevronDown className="dropdown-icon" />
+  </span>
+
+  <div className="dropdown-menu">
+    <a href="#">Study Guides</a>
+    <a href="#">PLP CANVAS</a>
+    <a href="#">Archie</a>
+    <a href="#">Registration</a>
+    <a href="#">Financial aid</a>
+    <a href="#">Previous Question Papers</a>
+    <a href="#">Social & Cultural Services</a>
+    <a href="#">Health Education & Related Services</a>
+        <a href="#">GBVF Student Survey</a>
+        <a href="#">Student Enrolment Satisfaction Survey</a>
+  </div>
+</div>
+
+          <div className="dropdown">
+  <span className="dropdown-toggle">
+    Campuses <FiChevronDown className="dropdown-icon" />
+  </span>
+
+  <div className="dropdown-menu">
+    <a href="#">Main Campus</a>
+    <a href="#">Bethlehem Campus</a>
+    <a href="#">Harrismith Campus</a>
+    <a href="#">Kwetlisong Campus</a>
+    <a href="#">Bonamelo Campus</a>
+    <a href="#">Sefikeng Campus</a>
+    <a href="#">Itemoheleng Campus</a>
+    <a href="#">Lere la Tshepe Campus</a>
+  </div>
+</div>
 
         <div className="dropdown">
   <span className="dropdown-toggle">
@@ -26,8 +64,8 @@ export default function Navbar() {
   <div className="dropdown-menu">
     <a href="#">Publications</a>
     <a href="#">Staff QMS</a>
-    <a href="#">Fraud Hotline</a>
-    <a href="#">IT Satisfaction Survey</a>
+        <a href="#">Maturity Model Staff Survey</a>
+    <a href="#">Staff Survey</a>
   </div>
 </div>
 
@@ -43,13 +81,14 @@ export default function Navbar() {
   </div>
 </div>
 
-          <a href="#">About</a>
-          <a href="#">Contact</a>
+          
+        <Link to="/contact">Contact</Link>
+
         </div>
 
         <div className="nav-actions">
           <FiSearch className="icon" />
-          <button className="btn primary">Apply Now</button>
+          <button className="btn primary">Fraud Hotline</button>
         </div>
       </div>
     </nav>

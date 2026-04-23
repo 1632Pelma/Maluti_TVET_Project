@@ -33,7 +33,7 @@
   position: relative;
   overflow: hidden;
 
-  aspect-ratio: 1 / 1;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,6 +43,8 @@
   visibility: hidden;
   transform: translateY(15px);
 }
+
+
 .quick-card.show {
   visibility: visible;
   animation: fadeUp 0.35s ease forwards;
@@ -63,10 +65,48 @@
 
 
 .quick-card:hover {
-  transform: translateY(-6px);
   background: #082f4a;
+  box-shadow: 0 12px 24px rgba(10, 61, 98, 0.18);
 }
 
+.quick-card {
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quick-card.show:hover {
+  transform: translateY(-6px);
+}
+
+.quick-grid {
+  padding: 0 40px;
+}
+
+.quick-card::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: -30px;
+  right: -30px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+}
+
+.quick-card:nth-child(odd) {
+  background: #0a3d62;
+}
+
+.quick-card:nth-child(even) {
+  background: #0c4a73;
+}
+.quick-card h3::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #dbeafe;
+  margin: 12px auto 0;
+}
 
 .quick-card::after {
   content: "";
@@ -91,6 +131,15 @@
   color: #f9a825;
 }
 
+.quick-icon {
+  color: #dbeafe;
+  margin-bottom: 18px;
+  transition: transform 0.3s ease;
+}
+
+.quick-card:hover .quick-icon {
+  transform: scale(1.12);
+}
 
 @keyframes fadeUp {
   from {

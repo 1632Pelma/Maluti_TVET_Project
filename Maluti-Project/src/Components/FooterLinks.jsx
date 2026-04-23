@@ -20,7 +20,7 @@ function FooterLinks() {
             </p>
 
             <span className="footer-location">
-              Free State, South Africa
+              South Africa
             </span>
           </div>
 

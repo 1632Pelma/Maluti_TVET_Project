@@ -52,7 +52,7 @@ function Programmes() {
   };
 
   return (
-    <section className="programmes">
+    <section id="programmes" className="programmes">
       <h2>Programmes</h2>
 
  

@@ -7,14 +7,23 @@ export default function Hero() {
 
        
         <div className="hero-left">
-          <h1>Build Your Future with Maluti TVET College</h1>
+          <h1>Discover Your Potential With Maluti TVET College</h1>
           <p>
-            Practical skills. Real opportunities. A better tomorrow.
+            Great Place, Great Choice For Lifelong Learning.
           </p>
 
           <div className="hero-buttons">
-            <button className="btn primary">Apply Now</button>
-            <button className="btn outline">Explore Courses</button>
+            <a
+  href="https://maluti.coltech.co.za/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn primary"
+>
+  Apply Now
+</a>
+           <a href="#campuses" className="btn outline">
+  View Campuses
+</a>
           </div>
         </div>
 
@@ -23,10 +32,11 @@ export default function Hero() {
 
           <div className="hero-card highlight">
             <h3>2026 Applications Open</h3>
-            <p>Apply now for the upcoming academic year.</p>
-            <button className="btn secondary small">
-              Download Prospectus
-            </button>
+            <p>Apply now.</p>
+<br/>
+            <a href="#programmes" className="btn secondary small">
+  See Programmes
+</a>
           </div>
 
 
