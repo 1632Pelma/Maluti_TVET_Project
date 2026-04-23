@@ -25,7 +25,9 @@
 
 
 
-
+.btn {
+  text-decoration: none;
+}
 
 .hero-content {
   display: flex;
