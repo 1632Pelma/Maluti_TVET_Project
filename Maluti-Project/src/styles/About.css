@@ -30,7 +30,7 @@
   max-width: 1300px;
   margin: 0 auto;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 80px;
   position: relative;
@@ -44,9 +44,9 @@
 .about-left {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 05px; 
 }
-
 .about-left h2 {
   font-size: 64px;
   color: #0a3d62;
