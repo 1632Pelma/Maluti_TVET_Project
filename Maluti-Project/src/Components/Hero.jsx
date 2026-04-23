@@ -21,7 +21,9 @@ export default function Hero() {
 >
   Apply Now
 </a>
-            <button className="btn outline">View Campuses</button>
+           <a href="#campuses" className="btn outline">
+  View Campuses
+</a>
           </div>
         </div>
 
@@ -30,10 +32,11 @@ export default function Hero() {
 
           <div className="hero-card highlight">
             <h3>2026 Applications Open</h3>
-            <p>Apply now for the upcoming academic year.</p>
-            <button className="btn secondary small">
-            See Programmes
-            </button>
+            <p>Apply now.</p>
+<br/>
+            <a href="#programmes" className="btn secondary small">
+  See Programmes
+</a>
           </div>
 
 
