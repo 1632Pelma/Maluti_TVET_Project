@@ -1,0 +1,113 @@
+
+.quick {
+  padding: 90px 0;
+  background: white;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+
+.quick h2 {
+  font-size: 42px;
+  margin-bottom: 50px;
+  color: #0a3d62;
+  font-weight: 700;
+}
+
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin: 0 auto;
+    width: 100%;
+  max-width: 1400px;
+}
+
+
+.quick-card {
+  background: #0a3d62;
+  padding: 30px 20px;
+  border-radius: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+}
+.quick-card.show {
+  visibility: visible;
+  animation: fadeUp 0.35s ease forwards;
+}
+
+
+.quick-card h3 {
+  font-size: 20px;
+  color: white;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.quick-card p {
+  font-size: 14px;
+  color: #dbeafe;
+}
+
+
+.quick-card:hover {
+  transform: translateY(-6px);
+  background: #082f4a;
+}
+
+
+.quick-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(249, 168, 37, 0.25),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.quick-card:hover::after {
+  opacity: 1;
+}
+
+
+.quick-card:hover h3 {
+  color: #f9a825;
+}
+
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+@media (max-width: 600px) {
+  .quick-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
