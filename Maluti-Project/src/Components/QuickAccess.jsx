@@ -1,14 +1,21 @@
 import "../styles/QuickAccess.css"
 import { useEffect, useRef, useState } from "react";
+import {
+  GraduationCap,
+  FileText,
+  User,
+  Wallet,
+  MapPin,
+} from "lucide-react";
 
 function QuickAccess() {
-  const items = [
-    { title: "Programmes"},
-    { title: "Apply Online"},
-    { title: "Student Portal" },
-    { title: "Financial Aid"},
-    { title: "Campuses"},
-  ];
+const items = [
+  { title: "Programmes", icon: <GraduationCap size={36} /> },
+  { title: "Apply Online", icon: <FileText size={36} /> },
+  { title: "Student Portal", icon: <User size={36} /> },
+  { title: "Financial Aid", icon: <Wallet size={36} /> },
+  { title: "Campuses", icon: <MapPin size={36} /> },
+];
 
   const [visibleCount, setVisibleCount] = useState(0);
   const sectionRef = useRef(null);
@@ -48,13 +55,17 @@ function QuickAccess() {
 
      <div className="quick-grid">
   {items.map((item, i) => (
-    <div
-      key={i}
-      className={`quick-card ${i < visibleCount ? "show" : ""}`}
-    >
-      <h3>{item.title}</h3>
-      <p>{item.desc}</p>
-    </div>
+  <div
+  key={i}
+  className={`quick-card ${i < visibleCount ? "show" : ""}`}
+>
+  <div className="quick-icon">{item.icon}</div>
+
+  <div className="quick-text">
+    <h3>{item.title}</h3>
+    <p>{item.desc}</p>
+  </div>
+</div>
   ))}
 </div>
     </section>
