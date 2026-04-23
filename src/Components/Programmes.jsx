@@ -38,6 +38,9 @@ const iconMap = {
     { id: 6, name: "Civil Engineering", category: "NATED", icon: "hardhat" },
     { id: 7, name: "Tourism", category: "NCV", icon: "car" },
     { id: 8, name: "Science Lab Tech", category: "NCV", icon: "flask" },
+    { id: 9, name: "Marketing", category: "NATED", icon: "briefcase" },
+{ id: 10, name: "Finance", category: "NATED", icon: "briefcase" },
+{ id: 11, name: "HR Management", category: "NATED", icon: "briefcase" },
   ];
 
   fetch("http://localhost:5000/api/programmes")
