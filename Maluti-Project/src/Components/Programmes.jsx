@@ -28,8 +28,8 @@ const iconMap = {
   car: <FaCar />,
 };
 
- useEffect(() => {
-  const data = [
+  useEffect(() => {
+  const fallbackData = [
     { id: 1, name: "Engineering Studies", category: "NCV", icon: "tools" },
     { id: 2, name: "Information Technology", category: "NCV", icon: "laptop" },
     { id: 3, name: "Business Management", category: "NATED", icon: "briefcase" },
@@ -40,26 +40,36 @@ const iconMap = {
     { id: 8, name: "Science Lab Tech", category: "NCV", icon: "flask" },
   ];
 
-  setProgrammes(data);
+  fetch("http://localhost:5000/api/programmes")
+    .then((res) => {
+      if (!res.ok) throw new Error();
+      return res.json();
+    })
+    .then((data) => setProgrammes(data))
+    .catch(() => {
+      console.log("Using fallback data");
+      setProgrammes(fallbackData);
+    });
 }, []);
 
+  // Filter by tab
   const filtered = programmes.filter(
     (item) => item.category === activeTab
   );
 
-
+  // Show only 8 unless expanded
   const visibleProgrammes = showAll
     ? filtered
     : filtered.slice(0, 8);
 
- 
+  // 🔥 Split dynamically into two columns
   const half = Math.ceil(visibleProgrammes.length / 2);
 
   return (
     <section id="programmes" className="programmes">
       <h2>Programmes</h2>
 
-      
+      {/* Tabs */}
       <div className="programme-tabs">
         <span
           className={activeTab === "NCV" ? "active" : ""}
@@ -84,10 +94,10 @@ const iconMap = {
         </span>
       </div>
 
-    
+      {/* Two Columns */}
       <div className="programme-columns">
         
-       
+        {/* LEFT COLUMN */}
         <div className="programme-column">
           {visibleProgrammes.slice(0, half).map((item) => (
             <div key={item.id} className="programme-line">
@@ -101,7 +111,7 @@ const iconMap = {
           ))}
         </div>
 
-        
+        {/* RIGHT COLUMN */}
         <div className="programme-column">
           {visibleProgrammes.slice(half).map((item) => (
             <div key={item.id} className="programme-line">
@@ -117,7 +127,7 @@ const iconMap = {
 
       </div>
 
-      
+      {/* Show More / Less */}
       {filtered.length > 8 && (
         <div className="show-more-container">
           <button
@@ -133,4 +143,3 @@ const iconMap = {
 }
 
 export default Programmes;
-
