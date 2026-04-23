@@ -14,6 +14,7 @@ import Campuses from "./Components/Campuses";
 import Contact from "./Components/Contact";
 import AboutPage from "./Components/AboutPage";
 import Study from "./Components/Study";
+import ScrollToTop from "./Components/ScrollToTop";
 
 
 
@@ -32,6 +33,8 @@ function Home() {
       <Campuses />
       <Stats />
       <FooterLinks />
+
+       <ScrollToTop />
     </>
   );
 }
@@ -44,6 +47,7 @@ function App() {
       <Routes>
         
         <Route path="/study" element={<Study />} />
+        
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<Contact />} />

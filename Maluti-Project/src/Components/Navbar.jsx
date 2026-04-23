@@ -82,7 +82,7 @@ export default function Navbar() {
 </div>
 
           
-        <Link to="/contact">Contact</Link>
+        <Link to="/contact">Contact Us</Link>
 
         </div>
 

@@ -14,7 +14,7 @@ function Campuses() {
   ];
 
   return (
-    <div className="campuses-section">
+   <div id="campuses" className="campuses-section">
       <h2 className="campuses-title">Our Campuses</h2>
 
       <div className="campuses-container">
