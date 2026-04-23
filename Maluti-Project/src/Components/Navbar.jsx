@@ -1,20 +1,23 @@
 import { FiSearch, FiChevronDown } from "react-icons/fi";
 import "../styles/Navbar.css";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav className="navbar">
       
       <div className="logo">
-        <img src="/images/logo.png" alt="Logo" />
+        <Link to="/">
+          <img src="/images/logo.png" alt="Logo" />
+        </Link>
       </div>
 
       
       <div className="nav-right">
         <div className="nav-links">
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Study</a>
+           <Link to="/">Home</Link>
+          <Link to="/about">About Us</Link>
+         <Link to="/study">Study</Link>
   
          
         <div className="dropdown">
@@ -79,7 +82,8 @@ export default function Navbar() {
 </div>
 
           
-          <a href="#">Contact Us</a>
+        <Link to="/contact">Contact</Link>
+
         </div>
 
         <div className="nav-actions">
