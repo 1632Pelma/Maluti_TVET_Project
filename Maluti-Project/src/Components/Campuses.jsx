@@ -18,19 +18,24 @@ function Campuses() {
       <h2 className="campuses-title">Our Campuses</h2>
 
       <div className="campuses-container">
-        {campuses.map((campus, index) => (
-          <div className="campus-card" key={index}>
-            <img
-              src={campus.image}
-              alt={campus.name}
-              className="campus-image"
-            />
-            <div className="campus-name">
-              <h3>{campus.name}</h3>
-            </div>
-          </div>
-        ))}
+  {campuses.map((campus, index) => (
+    <div className="campus-card" key={index}>
+      
+      <div className="campus-image-wrapper">
+        <img
+          src={campus.image}
+          alt={campus.name}
+          className="campus-image"
+        />
       </div>
+
+      <div className="campus-name">
+        <h3>{campus.name}</h3>
+      </div>
+
+    </div>
+  ))}
+</div>
     </div>
   );
 }
