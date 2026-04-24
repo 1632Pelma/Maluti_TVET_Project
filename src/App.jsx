@@ -14,6 +14,7 @@ import Campuses from "./Components/Campuses";
 import Contact from "./Components/Contact";
 import AboutPage from "./Components/AboutPage";
 import Study from "./Components/Study";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 
@@ -32,6 +33,8 @@ function Home() {
       <Campuses />
       <Stats />
       <FooterLinks />
+
+      <ScrollToTop />
     </>
   );
 }
